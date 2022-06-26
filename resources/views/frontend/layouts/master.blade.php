@@ -349,16 +349,17 @@
         $('.load_more').on('click', function(e) {
             
             e.preventDefault()
-            $page = parseInt($(this).attr('data-src'))
-            $page += 1
+            $current_page = parseInt($(this).attr('id'))
+            $next_page = $current_page + 1
             $.ajax({
                 
-                url: '/load_products?page='+ $page ,
+                url: '/load_products?page='+ $current_page ,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
                     $('#load_products_container').append(data['template'])
-                    $(this).attr('data-src', $page)
+                    $('#'+$current_page).attr('id', $next_page)
+                  
                 }
             })
         });
@@ -385,6 +386,33 @@
             } else {
                 $('#listSearch').hide();
                 $('#listSearch').html('');
+            }
+        })
+    </script>
+    <script>
+        $('#keyword_product').on('keyup', function() {
+            var keyword = $(this).val();
+            if (keyword != '') {
+                $.ajax({
+                    type: "get",
+                    url: "/searchAjax_product",
+                    data: {
+                        keyword: keyword
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        // console.log(response)
+                        $('#listSearch_product').show();
+                        $('#listSearch_product').html(response);
+                        $('#list_product').hide();
+                        $('#listSearch_product').css("height:auto");
+                    }
+                })
+            } else {
+                $('#listSearch_product').hide();
+                $('#list_product').show();
+                
+                $('#listSearch_product').html('');
             }
         })
     </script>

@@ -2482,19 +2482,20 @@ table tbody tr td{
 }
 
 .mtext-111 {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
   font-size: 25px;
   line-height: 1.2;
+  font-weight: bold;
 }
 
 .mtext-112 {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
   font-size: 22px;
   line-height: 1.333333;
 }
 
 .mtext-113 {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
   font-size: 22px;
   line-height: 1.333333;
   text-transform: uppercase;
@@ -3340,7 +3341,7 @@ table tbody tr td{
 
 .hov-img0 img {
   width: 100%;
-  max-height: 235px;
+  height: 235px;
   -webkit-transition: transform 0.9s ease;
   -o-transition: transform 0.9s ease;
   -moz-transition: transform 0.9s ease;
@@ -3446,6 +3447,9 @@ table tbody tr td{
 
 /*//////////////////////////////////////////////////////////////////
 [ XL ]*/
+body {
+  font-family: "Roboto", Helvetica, Arial, sans-serif !important;
+}
 @media (max-width: 1199px) {
   .m-0-xl {
     margin: 0;

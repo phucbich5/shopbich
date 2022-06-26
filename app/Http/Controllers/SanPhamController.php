@@ -74,14 +74,14 @@ class SanPhamController extends Controller
         if($request->hasFile('sp_hinh'))
         {
             $file = $request->sp_hinh;
-            // Lưu tên hình vào column sp_hinh
             $sp->sp_hinh = $file->getClientOriginalName();
+            
             // Chép file vào thư mục "photos"
             $fileSaved = $file->storeAs('public/photos', $sp->sp_hinh);
         }
         $sp->save();
         // dd($sp);
-        Session::flash('alert-info', 'Them moi thanh cong ^^~!!!');
+        Session::flash('alert-info', 'Them moi thanh cong !!!');
         return redirect()->route('backend.sanpham.index');
     }
 

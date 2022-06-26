@@ -260,6 +260,45 @@ class FrontendController extends Controller
             
         
         return response()->json($output);
+      
+    }
+    public function searchAjax_product(Request $request)
+    {
+        $output = '';
+        $product = Sanpham::where('sp_ten', 'like', '%' . $request->keyword . '%')->get(); 
+            foreach ($product as $pro) {
+                $output .= '<div class="col-6 col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item loai-'. $pro->l_ma.'" style="padding:0;border:1px solid #f3f3f3">
+                 
+                <div class="block2">
+                    <div class="block2-pic hov-img0">
+                        <img src="/storage/photos/' . $pro->sp_hinh . '" alt="IMG-PRODUCT">
+
+                        <a href="/san-pham/'. $pro->sp_ma.'"
+                            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal"
+                            >
+                            Xem nhanh
+                        </a>
+                    </div>
+
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1 flex-col-l">
+                            <a href="/san-pham/'. $pro->sp_ma.'"
+                                class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                ' . mb_substr($pro->sp_ten, 0, 40) . '...' . '
+                            </a>
+
+                            <span class="stext-105 cl3" style="width: 100%;">
+                                <span>Chỉ Từ : </span><span class="text-bold text-danger">' . number_format($pro->sp_giaBan, 0, '.', ".") . '</span><span> đ</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+            }
+            
+        
+        return response()->json($output);
+        
     }
     /**
      * Hàm query danh sách sản phẩm theo nhiều điều kiện
@@ -272,8 +311,10 @@ class FrontendController extends Controller
         $searchByLoaiMa = $request->query('searchByLoaiMa');
         if ($searchByLoaiMa != null) {
         }
-        // $data = $query->simplePaginate(12);
-        $data = $query->get();
+        $data = $query->simplePaginate(12);
+
+        
+        // $data = $query->get();
         return $data;
     }
 
@@ -308,7 +349,7 @@ class FrontendController extends Controller
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l">
-                                <a href="/san-pham/{{ $sp->sp_ma }}"
+                                <a href="/san-pham/'. $sp->sp_ma.'"
                                     class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     ' . mb_substr($sp->sp_ten, 0, 40) . '...' . '
                                 </a>

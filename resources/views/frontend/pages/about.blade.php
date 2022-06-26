@@ -14,7 +14,7 @@
 @section('main-content')
     <!-- Title page -->
     <section class="bg-img1 txt-center p-lr-15 p-tb-92"
-        style="background-image: url('{{ asset('themes/cozastore/images/bg-01.jpg') }}');">
+        style="background-image: url('{{ asset('/img/banner_about.jpeg') }}');">
         <h2 class="ltext-105 cl0 txt-center">
             PHÚC BÍCH STORE
         </h2>
@@ -53,7 +53,7 @@
                 <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
                     <div class="how-bor1 ">
                         <div class="hov-img0">
-                            <img src="{{ asset('themes/cozastore/images/about-01.jpg') }}" alt="IMG">
+                            <img src="{{ asset('/img/vechungtoi.webp') }}" alt="IMG">
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                 <div class="col-md-7 col-lg-8">
                     <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
                         <h3 class="mtext-111 cl2 p-b-16">
-                            Chế độ bảo hành:
+                            CHẾ ĐỘ BẢO HÀNH:
                         </h3>
 
                         <ul class="stext-113 cl6 p-b-26">
@@ -120,7 +120,7 @@
                 <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
                     <div class="how-bor1 ">
                         <div class="hov-img0">
-                            <img src="{{ asset('themes/cozastore/images/about-01.jpg') }}" alt="IMG">
+                            <img src="{{ asset('/img/baohanh.jpeg') }}" alt="IMG">
                         </div>
                     </div>
                 </div>

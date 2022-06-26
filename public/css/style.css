@@ -54,5 +54,14 @@
     .container-search-header{
        width: 100%;
     }
+    .hov-img0 img{
+        height: 200px;
+    }
+    
+}
+@media screen and (max-width:420px) {
+    .hov-img0 img{
+        height: 150px;
+    }
     
 }

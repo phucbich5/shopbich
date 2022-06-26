@@ -94,7 +94,7 @@
                                     giỏ hàng</ngcart-addtocart>
                             </div>
                         </div>
-                        {{-- <a target="_back" href="https://www.facebook.com/messages/t/100010512091081" class="button_chat">CHAT NGAY</a> --}}
+                        <a target="_back" href="https://www.facebook.com/messages/t/100050370886535" class="button_chat">CHAT NGAY</a>
                     </div>
 
                     <!--  -->

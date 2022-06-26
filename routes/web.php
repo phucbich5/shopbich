@@ -1,5 +1,6 @@
 <?php
-
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,12 +15,12 @@
 // route Hiển thị màn hình hello 
 Route::get('/hello', 'ExampleController@hello')->name('example.hello');
 
-Route::get('setLocale/{locale}', function ($locale) {
-    if (in_array($locale, Config::get('app.locales'))) {
-      Session::put('locale', $locale);
-    }
-    return redirect()->back();
-})->name('app.setLocale');
+// Route::get('setLocale/{locale}', function ($locale) {
+//     if (in_array($locale, Config::get('app.locales'))) {
+//       Session::put('locale', $locale);
+//     }
+//     return redirect()->back();
+// })->name('app.setLocale');
 
 Route::get('/', function () {
     return view('welcome');
@@ -94,6 +95,8 @@ Route::post('/admin/activate/{nv_ma}', 'BackendController@activate')->name('acti
 // Namespace PHP
 Route::get('/', 'Frontend\FrontendController@index')->name('frontend.home');
 Route::get('/search','Frontend\FrontendController@searchAjax');
+Route::get('/searchAjax_product','Frontend\FrontendController@searchAjax_product');
+
 
 Route::get('/load_products','Frontend\FrontendController@searchSanPham2');
 
