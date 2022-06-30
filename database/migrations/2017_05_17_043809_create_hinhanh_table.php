@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateHinhanhTable extends Migration {
 
@@ -18,6 +19,7 @@ class CreateHinhanhTable extends Migration {
             
             $table->primary(['sp_ma', 'ha_stt']);
             $table->foreign('sp_ma')->references('sp_ma')->on('cusc_sanpham')->onDelete('CASCADE')->onUpdate('CASCADE');
+            $table->timestamps();
         });
         DB::statement("ALTER TABLE `cusc_hinhanh` comment 'Hình ảnh sản phẩm # Các hình ảnh chi tiết của sản phẩm'");
     }

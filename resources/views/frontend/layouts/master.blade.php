@@ -34,7 +34,9 @@
 
     <!-- Các custom style của frontend -->
     <link rel="stylesheet" href="{{ asset('themes/cozastore/css/custom-styles.css') }}">
+    
     <link rel="stylesheet" href="/css/style.css">
+    
     <!-- Các custom style dành riêng cho từng view -->
     @yield('custom-css')
 </head>
@@ -405,7 +407,7 @@
                         $('#listSearch_product').show();
                         $('#listSearch_product').html(response);
                         $('#list_product').hide();
-                        $('#listSearch_product').css("height:auto");
+                        $('#listSearch_product').css('margin-top',35);
                     }
                 })
             } else {
@@ -416,6 +418,9 @@
             }
         })
     </script>
+
+    
+    
     @yield('custom-scripts')
 </body>
 

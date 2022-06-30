@@ -55,7 +55,7 @@ Biểu mẫu Phiếu in danh sách sản phẩm
             <tr>
                 <td align="center">{{ $loop->index + 1 }}</td>
                 <td align="center">
-                    <img class="sanpham-thumbnail" src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" />
+                    <img class="sanpham-thumbnail" src="{{ asset('uploads/' . $sp->sp_hinh) }}" />
                 </td>
                 <td align="left">{{ $sp->sp_ten }}</td>
                 <td align="right">{{ $sp->sp_giaGoc }}</td>

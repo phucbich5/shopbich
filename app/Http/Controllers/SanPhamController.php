@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\HinhAnh;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SanPham;
@@ -24,7 +25,7 @@ class SanPhamController extends Controller
 
         // Sử dụng Eloquennt Model phân trang
         // Mỗi trang có 5 mẫu tin
-        $ds_sanpham = SanPham::orderBy('sp_capNhat', 'DESC')->paginate(10); // SELECT * FROM sanpham LIMIT 0,5
+        $ds_sanpham = SanPham::orderBy('sp_capNhat', 'DESC')->get(); // SELECT * FROM sanpham LIMIT 0,5
 
         // Đường dẫn đến view được quy định như sau: <FolderName>.<ViewName>
         // Mặc định đường dẫn gốc của method view() là thư mục `resources/views`
@@ -60,6 +61,7 @@ class SanPhamController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $sp = new SanPham();
         $sp->sp_ten = $request->sp_ten;
         $sp->sp_giaGoc = $request->sp_giaGoc;
@@ -71,19 +73,19 @@ class SanPhamController extends Controller
         $sp->sp_trangThai = $request->sp_trangThai;
         $sp->l_ma = $request->l_ma;
 
-        if($request->hasFile('sp_hinh'))
-        {
+        if ($request->hasFile('sp_hinh')) {
             $file = $request->sp_hinh;
-            $sp->sp_hinh = $file->getClientOriginalName();
-            
+            $sp->sp_hinh = $file->getClientOriginalExtension();
+
             // Chép file vào thư mục "photos"
-            $fileSaved = $file->storeAs('public/photos', $sp->sp_hinh);
+            $fileSaved = $file->move(public_path('/uploads'), $sp->sp_hinh);
         }
         $sp->save();
-        // dd($sp);
+
         Session::flash('alert-info', 'Them moi thanh cong !!!');
         return redirect()->route('backend.sanpham.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -132,18 +134,17 @@ class SanPhamController extends Controller
         $sp->sp_trangThai = $request->sp_trangThai;
         $sp->l_ma = $request->l_ma;
 
-        if($request->hasFile('sp_hinh'))
-        {
+        if ($request->hasFile('sp_hinh')) {
             // Xóa hình cũ để tránh rác
-            Storage::delete('public/photos/' . $sp->sp_hinh);
+            Storage::delete('public/uploads/' . $sp->sp_hinh);
 
             // Upload hình mới
             // Lưu tên hình vào column sp_hinh
             $file = $request->sp_hinh;
             $sp->sp_hinh = $file->getClientOriginalName();
-            
+
             // Chép file vào thư mục "photos"
-            $fileSaved = $file->storeAs('public/photos', $sp->sp_hinh);
+            $fileSaved = $file->move(public_path('/uploads'), $sp->sp_hinh);
         }
         $sp->save();
 
@@ -160,8 +161,7 @@ class SanPhamController extends Controller
     public function destroy($id)
     {
         $sp = SanPham::where("sp_ma",  $id)->first();
-        if(empty($sp) == false)
-        {
+        if (empty($sp) == false) {
             // Xóa hình cũ để tránh rác
             Storage::delete('public/photos/' . $sp->sp_hinh);
         }
@@ -172,7 +172,68 @@ class SanPhamController extends Controller
         return redirect()->route('backend.sanpham.index');
     }
 
-    public function print() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function create_img_lq()
+    {
+        $sanpham = SanPham::all();
+        // $img_lienquan = HinhAnh::all();
+        $img_lienquan = HinhAnh::with('ma_sanpham')->orderby('created_at','DESC')->get();
+        return view('backend.sanpham.create_img_lq', compact('sanpham', 'img_lienquan'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store_img_lq(Request $request)
+    {
+        $img = new HinhAnh($request->all());
+        $img->sp_ma = $request->sp_ma;
+        $img->ha_stt = $request->ha_stt;
+
+        if ($request->hasFile('ha_ten')) {
+            $file = $request->ha_ten;
+            $img->ha_ten = $file->getClientOriginalName();
+
+            // Chép file vào thư mục "photos"
+            // $fileSaved = $file->storeAs('public/photos', $img->ha_ten);
+            $fileSaved = $file->move(public_path('/uploads'), $img->ha_ten);
+        }
+        $img->save();
+        Session::flash('alert-info', 'Them hinh anh moi thanh cong !!!');
+        return redirect()->route('backend.sanpham.create_img_lq');
+    }
+    public function destroy_img_lq($id)
+    {
+        $sp = HinhAnh::where("sp_ma",  $id)->first();
+        if (empty($sp) == false) {
+            // Xóa hình cũ để tránh rác
+            Storage::delete('public/photos/' . $sp->sp_hinh);
+        }
+
+        $sp->delete();
+
+        Session::flash('alert-info', 'Xóa hình ảnh thành công ^^~!!!');
+        return redirect()->route('backend.sanpham.create_img_lq');
+    }
+    public function print()
+    {
         $ds_sanpham = Sanpham::get();
         $ds_loai    = Loai::all();
         $data = [
@@ -187,7 +248,7 @@ class SanPhamController extends Controller
     /**
      * Action xuất PDF
      */
-    public function pdf() 
+    public function pdf()
     {
         $ds_sanpham = Sanpham::all();
         $ds_loai    = Loai::all();

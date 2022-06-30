@@ -78,7 +78,6 @@ a:hover {
 }
 
 
-/*---------------------------------------------*/
 @font-face {
   font-family: PlayfairDisplay-Regular;
   src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf');
@@ -89,7 +88,6 @@ a:hover {
   src: url('../fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf');
 }
 
-/*---------------------------------------------*/
 @font-face {
   font-family: Montserrat-Regular;
   src: url('../fonts/Montserrat/Montserrat-Regular.ttf');
@@ -2156,7 +2154,8 @@ table tbody tr td{
 .block2 {
   background: #fff;
   padding: 25px 15px;
-  /* border-radius: 10px; */
+  margin-top:-1px;
+  margin-right: -1px;
 }
 .block2-btn {
   position: absolute;
@@ -2319,19 +2318,20 @@ table tbody tr td{
   font-size: 14px;
   line-height: 1.466667;
   font-size: 16px;  
-  font-weight:bold;
+  font-weight:500;
   color:#333333;
-  text-transform: capitalize !important;
+  /* text-transform: capitalize !important; */
+  font-family: sans-serif!important;
   min-height: 55px;
   margin-top: 10px;
 }
 
 .stext-105 {
-  font-family: Poppins-Regular;
   font-size: 14px;
   line-height: 1.466667;
   letter-spacing: 1px;
   margin-top: auto;
+  font-family: sans-serif;
 }
 
 .stext-106 {

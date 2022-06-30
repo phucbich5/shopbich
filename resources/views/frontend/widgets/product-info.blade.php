@@ -12,12 +12,12 @@
                         <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                         <div class="slick3 gallery-lb">
-                            <div class="item-slick3" data-thumb="{{ asset('storage/photos/' . $sp->sp_hinh) }}">
+                            <div class="item-slick3" data-thumb="{{ asset('uploads/' . $sp->sp_hinh) }}">
                                 <div class="wrap-pic-w pos-relative">
-                                    <img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" alt="IMG-PRODUCT">
+                                    <img src="{{ asset('uploads/' . $sp->sp_hinh) }}" alt="IMG-PRODUCT">
 
                                     <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                        href="{{ asset('storage/photos/' . $sp->sp_hinh) }}">
+                                        href="{{ asset('uploads/' . $sp->sp_hinh) }}">
                                         <i class="fa fa-expand"></i>
                                     </a>
                                 </div>
@@ -33,13 +33,13 @@
                             ?>
                             @foreach ($filteredItems as $hinhanh)
                                 <div class="item-slick3"
-                                    data-thumb="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}">
+                                    data-thumb="{{ asset('uploads/' . $hinhanh->ha_ten) }}">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}"
+                                        <img src="{{ asset('uploads/' . $hinhanh->ha_ten) }}"
                                             alt="IMG-PRODUCT">
 
                                         <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                            href="{{ asset('storage/photos/' . $hinhanh->ha_ten) }}">
+                                            href="{{ asset('uploads/' . $hinhanh->ha_ten) }}">
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
@@ -47,6 +47,9 @@
                             @endforeach
                         </div>
                     </div>
+                    {{-- <p class="stext-102 cl3 p-t-23">
+                        {{ $sp->sp_thongTin }}
+                    </p> --}}
                 </div>
             </div>
 
@@ -90,7 +93,7 @@
                                     template-url="{{ asset('vendor/ngCart/template/ngCart/addtocart.html') }}"
                                     id="{{ $sp->sp_ma }}" name="{{ $sp->sp_ten }}"
                                     price="{{ number_format($sp->sp_giaBan, 0, '.', ".") }}" quantity="1" quantity-max="30"
-                                    data="{ sp_hinh_url: '{{ asset('storage/photos/' . $sp->sp_hinh) }}' }">Thêm vào
+                                    data="{ sp_hinh_url: '{{ asset('uploads/' . $sp->sp_hinh) }}' }">Thêm vào
                                     giỏ hàng</ngcart-addtocart>
                             </div>
                         </div>

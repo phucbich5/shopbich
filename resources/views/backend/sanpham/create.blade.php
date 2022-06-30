@@ -52,20 +52,13 @@ Thêm mới Sản phẩm. Vui lòng nhập thông tin và bấm Lưu.
         <label for="sp_giaGoc">Giá bán</label>
         <input type="number" class="form-control" id="sp_giaBan" name="sp_giaBan" value="{{ old('sp_giaBan') }}">
     </div>
-    {{-- <div class="form-group">
+    <div class="form-group">
         <div class="file-loading">
             <label>Hình đại diện</label>
             <input id="sp_hinh" type="file" name="sp_hinh">
             <div class="preview-upload">
-                <img id='sp_hinh-upload'/>
+                <img id='sp_hinh_upload'/>
             </div>
-        </div>
-    </div> --}}
-    <div class="form-group">
-        {{-- <img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" class="sanpham-thumbnail" /> --}}
-        <div class="file-loading">
-            <label>Hình đại diện</label>
-            <input id="sp_hinh" type="file" name="sp_hinh">
         </div>
     </div>
     <div class="form-group">
@@ -99,7 +92,7 @@ Thêm mới Sản phẩm. Vui lòng nhập thông tin và bấm Lưu.
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
-                $('#sp_hinh-upload').attr('src', e.target.result);
+                $('#sp_hinh_upload').attr('src', e.target.result);
             }
             reader.readAsDataURL(input.files[0]);
         }

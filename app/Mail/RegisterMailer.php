@@ -31,7 +31,7 @@ class RegisterMailer extends Mailable
     public function build()
     {
         $email = $this->data['nv_email'];
-        return $this->from(env('MAIL_FROM_ADDRESS', 'hotro.nentangtoituonglai@gmail.com'), env('MAIL_FROM_NAME', 'Sunshine'))
+        return $this->from(env('MAIL_FROM_ADDRESS', 'phucbich4@gmail.com'), env('MAIL_FROM_NAME', 'Sunshine'))
             ->replyTo($email)
             ->subject("Có thành viên $email vừa đăng ký")
             ->view('emails.register-email')

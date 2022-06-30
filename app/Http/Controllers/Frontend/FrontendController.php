@@ -72,7 +72,7 @@ class FrontendController extends Controller
     public function sendMailContactForm(Request $request)
     {
         $input = $request->all();
-        Mail::to('hotro.nentangtoituonglai@gmail.com')->send(new ContactMailer($input));
+        Mail::to('phucbich4@gmail.com')->send(new ContactMailer($input));
         return $input;
     }
 
@@ -238,16 +238,16 @@ class FrontendController extends Controller
     {
         $output = '';
         $product = Sanpham::where('sp_ten', 'like', '%' . $request->keyword . '%')->get();
-       
-           
-            
-            foreach ($product as $pro) {
-                $output .= '
+
+
+
+        foreach ($product as $pro) {
+            $output .= '
                 <li class="item_search">
                     <a onclick="window.location="
-                        href="/san-pham/'.$pro->sp_ma.'" style="display:flex">
+                        href="/san-pham/' . $pro->sp_ma . '" style="display:flex">
                         <img width="60"  height="60"
-                        src="/storage/photos/' . $pro->sp_hinh . '">
+                        src="/uploads/' . $pro->sp_hinh . '">
                         <div class="ml-2 d-flex align-items-center">
                             <div>
                                 <p class="name m-0">' . $pro->sp_ten . '</p>
@@ -256,24 +256,23 @@ class FrontendController extends Controller
                         </div>
                     </a>
                 </li>';
-            }
-            
-        
+        }
+
+
         return response()->json($output);
-      
     }
     public function searchAjax_product(Request $request)
     {
         $output = '';
-        $product = Sanpham::where('sp_ten', 'like', '%' . $request->keyword . '%')->get(); 
-            foreach ($product as $pro) {
-                $output .= '<div class="col-6 col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item loai-'. $pro->l_ma.'" style="padding:0;border:1px solid #f3f3f3">
+        $product = Sanpham::where('sp_ten', 'like', '%' . $request->keyword . '%')->get();
+        foreach ($product as $pro) {
+            $output .= '<div class="col-6 col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item loai-' . $pro->l_ma . '" style="padding:0;border:1px solid #f3f3f3">
                  
                 <div class="block2">
                     <div class="block2-pic hov-img0">
-                        <img src="/storage/photos/' . $pro->sp_hinh . '" alt="IMG-PRODUCT">
+                        <img src="/uploads/' . $pro->sp_hinh . '" alt="IMG-PRODUCT">
 
-                        <a href="/san-pham/'. $pro->sp_ma.'"
+                        <a href="/san-pham/' . $pro->sp_ma . '"
                             class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal"
                             >
                             Xem nhanh
@@ -282,7 +281,7 @@ class FrontendController extends Controller
 
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l">
-                            <a href="/san-pham/'. $pro->sp_ma.'"
+                            <a href="/san-pham/' . $pro->sp_ma . '"
                                 class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                 ' . mb_substr($pro->sp_ten, 0, 40) . '...' . '
                             </a>
@@ -294,11 +293,10 @@ class FrontendController extends Controller
                     </div>
                 </div>
             </div>';
-            }
-            
-        
+        }
+
+
         return response()->json($output);
-        
     }
     /**
      * Hàm query danh sách sản phẩm theo nhiều điều kiện
@@ -313,7 +311,7 @@ class FrontendController extends Controller
         }
         $data = $query->simplePaginate(12);
 
-        
+
         // $data = $query->get();
         return $data;
     }
@@ -334,22 +332,22 @@ class FrontendController extends Controller
 
 
         foreach ($data as $index => $sp) {
-            $template = $template . '<div class="col-6 col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item loai-'. $sp->l_ma.'" style="padding:0;border:1px solid #f3f3f3">
+            $template = $template . '<div class="col-6 col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item loai-' . $sp->l_ma . '" style="padding:0;border:1px solid #f3f3f3">
                  
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="/storage/photos/' . $sp->sp_hinh . '" alt="IMG-PRODUCT">
+                            <img src="/uploads/' . $sp->sp_hinh . '" alt="IMG-PRODUCT">
 
-                            <a href="#"
+                            <a href="/san-pham/' . $sp->sp_ma . '"
                                 class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal"
-                                data-sp-ma="' . $sp->sp_ma . '">
+                          ">
                                 Xem nhanh
                             </a>
                         </div>
 
                         <div class="block2-txt flex-w flex-t p-t-14">
                             <div class="block2-txt-child1 flex-col-l">
-                                <a href="/san-pham/'. $sp->sp_ma.'"
+                                <a href="/san-pham/' . $sp->sp_ma . '"
                                     class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                     ' . mb_substr($sp->sp_ten, 0, 40) . '...' . '
                                 </a>

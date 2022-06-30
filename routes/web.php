@@ -56,10 +56,13 @@ Route::group(['middleware' => 'auth'], function()
     // Sản phẩm
     Route::get('/admin/sanpham', 'SanPhamController@index')->name('backend.sanpham.index');
     Route::get('/admin/sanpham/create', 'SanPhamController@create')->name('backend.sanpham.create');
+    Route::get('/admin/sanpham/create_img_lq', 'SanPhamController@create_img_lq')->name('backend.sanpham.create_img_lq');
     Route::post('/admin/sanpham/store', 'SanPhamController@store')->name('backend.sanpham.store');
+    Route::post('/admin/sanpham/store_img_lq', 'SanPhamController@store_img_lq')->name('backend.sanpham.store_img_lq');
     Route::get('/admin/sanpham/edit/{id}', 'SanPhamController@edit')->name('backend.sanpham.edit');
     Route::put('/admin/sanpham/update/{id}', 'SanPhamController@update')->name('backend.sanpham.update');
     Route::delete('/admin/sanpham/delete/{id}', 'SanPhamController@destroy')->name('backend.sanpham.destroy');
+    Route::delete('/admin/sanpham/delete_img_lq/{id}', 'SanPhamController@destroy_img_lq')->name('backend.sanpham.destroy_img_lq');
     Route::get('/admin/sanpham/print', 'SanPhamController@print')->name('backend.sanpham.print');
     Route::get('/admin/sanpham/pdf', 'SanPhamController@pdf')->name('backend.sanpham.pdf');
 

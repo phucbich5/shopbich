@@ -1,7 +1,7 @@
-<div class="bg0 p-b-40 pt-5" style="background:#fcfcfc">
+<div class="bg0 p-b-40 pt-5" style="background:#f9f9f9">
     <div class="container">
         <div>
-            <div class="flex-w flex-sb-m p-b-52">
+            <div class="flex-w flex-sb-m" style="margin-bottom:20px">
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                     <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
                         Tất cả
@@ -253,7 +253,7 @@
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-pic hov-img0">
-                                <img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" alt="IMG-PRODUCT">
+                                <img src="{{ asset('uploads/' . $sp->sp_hinh) }}" alt="IMG-PRODUCT">
 
                                 <a href="#"
                                     class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal"
@@ -266,7 +266,7 @@
                                 <div class="block2-txt-child1 flex-col-l">
                                     <a href="/san-pham/{{ $sp->sp_ma }}"
                                         class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6 d-flex align-content-center">
-                                        {{ mb_substr($sp->sp_ten, 0, 40) . '...' }}
+                                        {{ mb_substr($sp->sp_ten, 0) }}
                                     </a>
 
                                     <span class="stext-105 cl3" style="width: 100%;">
@@ -290,25 +290,6 @@
             <div class="row isotope-grid" id="load_products_container">
 
             </div>
-            <style>
-                /* .row.isotope-grid{
-                    max-height: 800px;
-                    overflow-y:scroll;
-                    position: sticky;
-                } */
-                .row.isotope-grid::-webkit-scrollbar {
-                    width: 1px;
-                }
-
-                #load_products_container,#listSearch_product {
-                    height: 100% !important;
-                    width: 100%;
-                }
-                #listSearch_product {
-                    margin: 0;
-                }
-            </style>
-
 
             <!-- Load more -->
             <div class="flex-c-m flex-w w-full p-t-45">

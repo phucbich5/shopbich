@@ -42,7 +42,7 @@ Sửa Sản phẩm. Vui lòng nhập thông tin và bấm Lưu.
         <input type="number" class="form-control" id="sp_giaBan" name="sp_giaBan" value="{{ old('sp_giaBan', $sp->sp_giaBan) }}">
     </div>
     <div class="form-group">
-        <img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" class="sanpham-thumbnail" />
+        <img src="{{ asset('uploads/' . $sp->sp_hinh) }}" class="sanpham-thumbnail" />
         <div class="file-loading">
             <label>Hình đại diện</label>
             <input id="sp_hinh" type="file" name="sp_hinh">

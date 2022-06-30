@@ -83,7 +83,7 @@
             <tr>
                 <td align="center">{{ $loop->index + 1 }}</td>
                 <td align="center">
-                    <img class="hinhSanPham" src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" />
+                    <img class="hinhSanPham" src="{{ asset('uploads/' . $sp->sp_hinh) }}" />
                 </td>
                 <td align="left">{{ $sp->sp_ten }}</td>
                 <td align="right">{{ $sp->sp_giaGoc }}</td>

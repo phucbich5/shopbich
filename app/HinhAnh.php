@@ -54,4 +54,9 @@ class HinhAnh extends Model
 
         return $this->getAttribute($keyName);
     }
+    public function ma_sanpham()
+    {
+        // fix here   
+        return $this->belongsTo('App\SanPham', 'sp_ma', 'sp_ma');
+    }
 }

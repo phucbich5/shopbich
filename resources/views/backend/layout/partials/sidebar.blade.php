@@ -43,12 +43,20 @@
                     <li class="nav-item">
                         <a class="nav-link {{ (strpos(Route::currentRouteName(), 'backend.sanpham.create') === 0) ? 'active' : '' }}" href="{{ route('backend.sanpham.create') }}">
                             <span data-feather="plus"></span>
-                            Thêm mới
+                            Thêm mới sản phẩm
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ (strpos(Route::currentRouteName(), 'backend.sanpham.create_img_lq') === 0) ? 'active' : '' }}" href="{{ route('backend.sanpham.create_img_lq') }}">
+                            <span data-feather="plus"></span>
+                            Thêm hình ảnh liên quan
                         </a>
                     </li>
                 </ul>
             </li>
             <!-- Menu Sản phẩm - End -->
+
+
             <!-- Menu Báo cáo - Start -->
             <li class="nav-item">
                 <a href="#baocaoSubMenu" data-toggle="collapse" aria-expanded="false" class="nav-link dropdown-toggle {{ (strpos(Route::currentRouteName(), 'backend.baocao') === 0) ? 'active' : '' }}">
